@@ -7,13 +7,18 @@ public class OrderItem {
         this.quantity=quantity;
     }
 
-    public int getFinalPrice() {
-    double originalPrice = this.product.getPrice();
-    double discountPercentage = this.product.checkDiscount(this.quantity) / 100.0;
-    double discountedPrice = originalPrice * (1 - discountPercentage);
-    int finalPrice = (int) (discountedPrice * this.quantity);
-    return finalPrice;
+    public OrderItem(String string, int i, int j) {
     }
+
+    public int getFinalPrice() {
+        double originalPrice = this.product.getPrice();
+        double discountPercentage = this.product.checkDiscount(this.quantity);
+        double discountedPrice = originalPrice - (originalPrice * discountPercentage);
+        double finalPrice = discountedPrice * this.quantity;
+        return (int) Math.round(finalPrice);
+    }
+    
+    
 
     public Product getProduct(){
         return product;
