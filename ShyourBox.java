@@ -6,12 +6,20 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class ShyourBox {
     private ArrayList<Product> products = new ArrayList<Product>();
     private ArrayList<Cart> carts = new ArrayList<Cart>();
     private ArrayList<Customer> customers = new ArrayList<Customer>();
     private Scanner scanner = new Scanner(System.in);
 
+
+    /**
+     * Pesan pembuka dilengkapi dengan FileNotFoundException
+     * yang akan aktif jika file tidak ditemukan
+     * @param args
+     * @throws FileNotFoundException
+     */
     public static void main(String[] args) throws FileNotFoundException {
         ShyourBox shyourboxApp = new ShyourBox();
         System.out.println("Welcome to ShyourBox! Yuk beli jangan shy shy!");
@@ -83,6 +91,9 @@ public class ShyourBox {
     private void addProduct(String productAddress) {
     }
 
+    /**
+     * Proses pembelian produk dari buyProduct
+     */
     public void buyProduct() {
         System.out.print("Masukkan nama customer: ");
         String namaCustomer = scanner.nextLine();
@@ -127,8 +138,7 @@ public class ShyourBox {
         }
     }
 
-    // Metode lainnya tetap sama
-
+    
     private Product searchProduct(String produkYangDibeli) {
         return null;
     }
@@ -137,12 +147,18 @@ public class ShyourBox {
         return null;
     }
 
+    /**
+     * Pesan yang akan dikeluarkan saat tidak ada transaksi yang terjadi
+     */
     public void printReceipt() {
         if (carts.isEmpty()) {
             System.out.println("Tidak ada transaksi untuk dicetak.");
             return;
         }
 
+        /**
+         * proses pengeprintan file jika ada transaksi yang terjadi.
+         */
         try {
             String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(0));
             String receiptFileName = "receipt_" + timeStamp + ".txt";
