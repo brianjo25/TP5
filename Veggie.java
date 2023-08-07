@@ -9,23 +9,26 @@ public class Veggie extends Product{
 
     @Override
     public double checkDiscount(int quantity) {
-        if (isOrganic == true){
-            if (quantity >= 5){
-                return this.getPrice() * 0.2;
-            }
-            else if (quantity >= 3){
-                return this.getPrice()*0.1;
-            }
-
-        else{
-            if (quantity >= 5){
-                return this.getPrice() * 0.25;
-            }
-            else if (quantity >= 3){
-                return this.getPrice() * 0.20;
-            }
-            }
+    if (isOrganic) {
+        if (quantity >= 5) {
+            return this.getPrice() * 0.2;
+        } 
+        else if (quantity >= 3) {
+            return this.getPrice() * 0.1;
         }
-        return 0;
+    } 
+    else {
+        if (quantity >= 5) {
+            return this.getPrice() * 0.25;
+        } 
+        else if (quantity >= 3) {
+            return this.getPrice() * 0.2;
+        }
+    }
+    return 0;
+}
+
+    public boolean isOrganic() {
+        return isOrganic;
     }
 }
