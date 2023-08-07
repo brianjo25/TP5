@@ -4,10 +4,31 @@ public class Customer {
     private boolean isPremium;
     private Cart cart = new Cart(this);
 
-    public Customer(String name , boolean isPremium){
+
+    /**
+     * Konstruktor untuk name dan isPremium
+     * @param object
+     */
+    public Customer(Object object){
     this.name = name;
     this.isPremium = isPremium;
     }
+
+    
+    /**
+     * Konstruktor yang menerima parameter
+     * @param customerName
+     * @param isPremium2
+     */
+    public Customer(String customerName, boolean isPremium2) {
+    }
+
+
+    /**
+     * 3 hal di bawah ini adalah getter
+     * untuk mendapatkan nilai dari nama, isPremium, dan cart
+     * @return
+     */
 
     public String getName(){
         return name;
