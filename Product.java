@@ -11,11 +11,16 @@ abstract class Product {
     }
     
     public double checkDiscount(int quantity) {
-        // TODO: Implement this method.
         return 0;
     }
 
    public int getPrice(){
     return price;
+   }
+   public String getName(){
+    return name;
+   }
+   public int getStock(){
+    return stock;
    }
 }
