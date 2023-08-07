@@ -11,23 +11,24 @@ public class Fruit extends Product {
 
     @Override
     public double checkDiscount(int quantity) {
-        if (isLocal == true){
-            if (quantity >= 5){
+        if (isLocal) {
+            if (quantity >= 5) {
                 return this.getPrice() * 0.3;
-            }
-            else if (quantity >= 3){
-                return this.getPrice()*0.2;
-            }
-
-        else{
-            if (quantity >= 5){
+            } else if (quantity >= 3) {
                 return this.getPrice() * 0.2;
             }
-            else if (quantity >= 3){
+        } else {
+            if (quantity >= 5) {
+                return this.getPrice() * 0.2;
+            } else if (quantity >= 3) {
                 return this.getPrice() * 0.15;
-            }
             }
         }
         return 0;
+    }
+    
+
+    public boolean isLocal() {
+        return isLocal;
     }
 }
