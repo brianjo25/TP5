@@ -17,7 +17,7 @@ abstract class Product {
         this. stock = stock;
     }
     
-    
+
     public double checkDiscount(int quantity) {
         return 0;
     }
@@ -51,7 +51,7 @@ abstract class Product {
     * @return
     */
 public String getProductName() {
-    return null;
+    return name;
 }
 
 /**

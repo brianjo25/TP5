@@ -49,10 +49,10 @@ public class Cart {
     }
 
     /**
-     * Mereturn null jika getCustomer tidak menemukan customernya
+     * Mereturn costumer jika getCustomer tidak menemukan customernya
      * @return
      */
     public Customer getCustomer() {
-        return null;
+        return customer;
     }
 }

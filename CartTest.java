@@ -1,34 +1,57 @@
-import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.Test;
+import java.util.ArrayList;
+import static org.junit.Assert.*;
 
 public class CartTest {
 
+    private Product apple;
+    private Product banana;
+    private Customer premiumCustomer;
+    private Customer regularCustomer;
+    private OrderItem appleOrder;
+    private OrderItem bananaOrder;
+    private Cart premiumCart;
+    private Cart regularCart;
+
+    @Before
+    public void setup() {
+        apple = new Fruit("Apple", 10000, 50, true);
+        banana = new Fruit("Banana", 8000, 40, false);
+
+        premiumCustomer = new Customer("Premium Customer", true);
+        regularCustomer = new Customer("Regular Customer", false);
+
+        appleOrder = new OrderItem(apple, 3);
+        bananaOrder = new OrderItem(banana, 5);
+
+        premiumCart = new Cart(premiumCustomer);
+        regularCart = new Cart(regularCustomer);
+
+        premiumCart.addOrderItem(appleOrder);
+        regularCart.addOrderItem(bananaOrder);
+    }
+
     @Test
-    public void testGetTotalPriceEmptyCart() {
-        Customer customer = new Customer(false);
-        Cart cart = new Cart(customer);
+    public void testGetOrderItemList() {
+        ArrayList<OrderItem> premiumItems = premiumCart.getOrderItemList();
+        assertEquals(1, premiumItems.size());
+        assertEquals("Apple", premiumItems.get(0).getProduct().getProductName());
 
-        double expectedOutput = 0.0;
-        double actualOutput = cart.getTotalPrice();
-
-        assertEquals(expectedOutput, actualOutput, 0.01);
+        ArrayList<OrderItem> regularItems = regularCart.getOrderItemList();
+        assertEquals(1, regularItems.size());
+        assertEquals("Banana", regularItems.get(0).getProduct().getProductName());
     }
 
+    @Test
+    public void testGetTotalPrice() {
+        assertEquals(27000, premiumCart.getTotalPrice(), 0.001);
+        assertEquals(40000, regularCart.getTotalPrice(), 0.001);
+    }
+
+    @Test
+    public void testGetCustomer() {
+        assertEquals(premiumCustomer, premiumCart.getCustomer());
+        assertEquals(regularCustomer, regularCart.getCustomer());
+    }
 }
-
-  @Test
-    public void testGetTotalPriceNonPremiumCustomer() {
-        Customer customer = new Customer(false);
-        Cart cart = new Cart(customer);
-
-        Product product1 = new Fruit("Apple", 5000, 2, true);
-        Product product2 = new Veggie("Carrot", 3000, 3, true);
-
-        cart.addOrderItem(new OrderItem(product1, 2));
-        cart.addOrderItem(new OrderItem(product2, 3));
-
-        double expectedOutput = 19500.0; // (2 * 5000) + (3 * 3000) = 10000 + 9000 = 19000
-        double actualOutput = cart.getTotalPrice();
-
-        assertEquals(expectedOutput, actualOutput, 0.01);
-    }
