@@ -5,7 +5,6 @@ public class Cart {
     private ArrayList<OrderItem> orderList= new ArrayList<>();
 
     Cart(Customer customer) {
-        // TODO: Implement this method.
         this.customer = customer;
     }
 
